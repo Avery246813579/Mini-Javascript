@@ -45,6 +45,7 @@ public class MiniExporter {
 				writer.flush();
 			}
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			Logger.log(Logger.ERROR, "Could not write to export file");
 		}
 		
