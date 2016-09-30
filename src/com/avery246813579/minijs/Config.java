@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Config {
-	private static Map<String, Object> properties = new HashMap<String, Object>();
+	private Map<String, Object> properties = new HashMap<String, Object>();
 	private File file;
 
-	public Config() {
-		file = new File("minijs.conf");
+	public Config(String name) {
+		file = new File(name);
 
 		if (!file.exists()) {
 			try {
@@ -102,7 +102,7 @@ public class Config {
 
 	}
 	
-	public static Map<String, Object> getProperties(){
+	public Map<String, Object> getProperties(){
 		return properties;
 	}
 }

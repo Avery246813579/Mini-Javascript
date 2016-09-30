@@ -10,19 +10,22 @@ import java.util.List;
 
 public class MiniSegment {
 	private List<File> files = new ArrayList<File>();
+	private MiniFile miniFile;
 	private String segment;
 	private File file;
 
-	public MiniSegment(List<File> files) {
+	public MiniSegment(MiniFile miniFile, List<File> files) {
 		this.files = files;
+		this.miniFile = miniFile;
 	}
 
-	public MiniSegment(File file) {
+	public MiniSegment(MiniFile miniFile, File file) {
 		this.file = file;
+		this.miniFile = miniFile;
 	}
 
-	public MiniSegment() {
-
+	public MiniSegment(MiniFile miniFile) {
+		this.miniFile = miniFile;
 	}
 
 	public void addFile(File file) {
@@ -83,7 +86,7 @@ public class MiniSegment {
 
 	private String request(String encoding) {
 		return Request.sendRequest("http://closure-compiler.appspot.com/compile", RequestMethod.POST, null,
-				"compilation_level=" + Config.getProperties().get("compilationLevel")
+				"compilation_level=" + miniFile.getConfig().getProperties().get("compilationLevel")
 						+ "&output_format=text&output_info=compiled_code&js_code=" + encoding);
 
 	}
