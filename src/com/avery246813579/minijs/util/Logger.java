@@ -1,4 +1,4 @@
-package com.avery246813579.minijs;
+package com.avery246813579.minijs.util;
 
 public class Logger {
 	public static final String WARNING = "WARNING", ERROR = "ERROR", INFO = "INFO";

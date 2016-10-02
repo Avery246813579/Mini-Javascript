@@ -1,0 +1,7 @@
+#
+# Locations of the files to shorten
+#
+compressing: 
+- test/test.js
+- test/jquery.min.js
+- test/test2.js

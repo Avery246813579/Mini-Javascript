@@ -1,4 +1,4 @@
-package com.avery246813579.minijs;
+package com.avery246813579.minijs.components;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.avery246813579.minijs.util.Logger;
 
 public class MiniExporter {
 	List<String> segments = new ArrayList<String>();

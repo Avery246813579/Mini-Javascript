@@ -1,4 +1,4 @@
-package com.avery246813579.minijs;
+package com.avery246813579.minijs.requests;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,14 +1,14 @@
-package com.avery246813579.minijs;
+package com.avery246813579.minijs.components;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MiniFile {
-	private Config config;
+	private MiniConfig config;
 	
 	public MiniFile(String configLocation) {
-		config = new Config(configLocation);
+		config = new MiniConfig(configLocation);
 		
 		@SuppressWarnings("unchecked")
 		List<String> compressing = (List<String>) config.getProperties().get("compressing");
@@ -43,7 +43,7 @@ public class MiniFile {
 		new MiniExporter((String) config.getProperties().get("export"), segments);
 	}
 	
-	public Config getConfig(){
+	public MiniConfig getConfig(){
 		return config;
 	}
 }

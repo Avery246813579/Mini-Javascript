@@ -1,0 +1,6 @@
+#
+# True if we won't mini min files 
+#
+# Recommended true
+#
+ignoreMin: true

@@ -1,4 +1,4 @@
-package com.avery246813579.minijs;
+package com.avery246813579.minijs.components;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,6 +7,10 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.avery246813579.minijs.requests.Request;
+import com.avery246813579.minijs.requests.RequestMethod;
+import com.avery246813579.minijs.util.Logger;
 
 public class MiniSegment {
 	private List<File> files = new ArrayList<File>();

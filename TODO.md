@@ -4,8 +4,8 @@ This little file is to help me manage what I'm doing!
 
 # Upcoming Features 
 
-- Check Configuration is valid
++ Check Configuration is valid
 + Ignore .Min files 
-- Make the program run though all folders looking for minijs.conf
++ Make the program run though all folders looking for minijs.conf
 - Comment code and config
-- Auto generate config
++ Auto generate config
