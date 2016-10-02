@@ -14,4 +14,8 @@ public class Logger {
 			System.exit(0);
 		}
 	}
+	
+	public static void error(String message){
+		log(ERROR, message);
+	}
 }
