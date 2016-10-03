@@ -9,11 +9,12 @@ public class MiniFile {
 	
 	public MiniFile(String configLocation) {
 		config = new MiniConfig(configLocation);
+		File configFile = new File(configLocation);
 		
 		@SuppressWarnings("unchecked")
 		List<String> compressing = (List<String>) config.getProperties().get("compressing");
 		List<String> segments = new ArrayList<String>();
-
+		
 		boolean hitReg = false;
 		List<File> files = new ArrayList<File>();
 		for(String file : compressing){
@@ -25,13 +26,13 @@ public class MiniFile {
 					files.clear();
 				}
 				
-				segments.add(new MiniSegment(this, new File(file)).getText());
+				segments.add(new MiniSegment(this, new File(configFile.getParentFile().getAbsolutePath() + "/" + file)).getText());
 				hitReg = false;
 				continue;
 			}
 			
 			hitReg = true;
-			files.add(new File(file));
+			files.add(new File(configFile.getParentFile().getAbsolutePath() + "/" + file));
 		}
 		
 		if(hitReg){
@@ -40,7 +41,7 @@ public class MiniFile {
 			segments.add(segment.getSegment());
 		}
 		
-		new MiniExporter((String) config.getProperties().get("export"), segments);
+		new MiniExporter(configFile.getParentFile().getAbsolutePath() + "/" + (String) config.getProperties().get("export"), segments);
 	}
 	
 	public MiniConfig getConfig(){
