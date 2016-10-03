@@ -1,5 +1,5 @@
 #
-# True if we won't mini min files 
+# Changes if we should ignore mini-ing '.min.js' files. 
 #
 # Recommended true
 #

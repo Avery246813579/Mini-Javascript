@@ -1,4 +1,4 @@
 #
-# Location to export the shortened code
+# Location of the export file
 #
 export: test/javascript.js

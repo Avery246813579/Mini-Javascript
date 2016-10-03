@@ -1,9 +1,10 @@
 # 
 #  Choose a compilation level
+#
 #  - WHITESPACE_ONLY
 #  - SIMPLE_OPTIMIZATIONS
 #  - ADVANCED_OPTIMIZATIONS
 # 
 #  More information here: https://developers.google.com/closure/compiler/docs/compilation_levels
-
+#
 compilationLevel: SIMPLE_OPTIMIZATIONS

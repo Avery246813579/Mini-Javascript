@@ -18,6 +18,8 @@ import com.avery246813579.minijs.util.Logger;
 
 public class MiniConfig {
 	private Map<String, Object> properties = new HashMap<String, Object>();
+	private List<String> values = new ArrayList<String>();
+	private String property = null;
 	private String name;
 	private File file;
 
@@ -36,9 +38,6 @@ public class MiniConfig {
 		init();
 		validify();
 	}
-
-	String property = null;
-	List<String> values = new ArrayList<String>();
 
 	public void init() {
 		try {
@@ -114,7 +113,6 @@ public class MiniConfig {
 
 		String[] args = line.split(":");
 
-		// Lets stop the last property
 		if (property != null) {
 			properties.put(property, values);
 

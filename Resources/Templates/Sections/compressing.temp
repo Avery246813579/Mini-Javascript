@@ -1,7 +1,6 @@
 #
-# Locations of the files to shorten
+# Files we want to compress
 #
 compressing: 
-- test/test.js
-- test/jquery.min.js
-- test/test2.js
+- pathto/file.js
+- file.min.js
