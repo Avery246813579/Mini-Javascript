@@ -76,7 +76,6 @@ public class MiniConfig {
 
 		for (String template : TemplateHandler.TEMPLATES) {
 			if (!properties.containsKey(template)) {
-				Logger.log(Logger.WARNING, "\"" + template + "\" configuration not found in config. Adding in the default.");
 				lines.add("");
 				lines.addAll(TemplateHandler.getTemplate(template).getLines());
 			}

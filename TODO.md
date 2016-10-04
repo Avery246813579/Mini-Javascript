@@ -10,4 +10,5 @@ This little file is to help me manage what I'm doing!
 + Auto generate config
 - Comment code and config
 - Compress into seperate files
-- Add Mini-ing Cs
+- Add Mini-ing Css
++ Disabling files

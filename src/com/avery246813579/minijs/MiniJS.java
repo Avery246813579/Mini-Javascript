@@ -28,8 +28,9 @@ public class MiniJS {
 		}
 
 		for (File file : files) {
-			Logger.log("Mini-ing: " + file.getName());
+			Logger.log("Mini-ing: " + file.getAbsolutePath());
 			new MiniFile(file.getAbsolutePath());
+			System.out.println("");
 		}
 	}
 

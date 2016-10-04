@@ -9,10 +9,6 @@ public class Logger {
 	
 	public static void log(String prefix, String message){
 		System.out.println("MiniJS " + prefix + " >> " + message);
-		
-		if(prefix == ERROR){
-			System.exit(0);
-		}
 	}
 	
 	public static void error(String message){

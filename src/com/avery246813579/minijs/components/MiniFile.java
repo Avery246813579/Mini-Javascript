@@ -4,12 +4,19 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.avery246813579.minijs.util.Logger;
+
 public class MiniFile {
 	private MiniConfig config;
 	
 	public MiniFile(String configLocation) {
 		config = new MiniConfig(configLocation);
 		File configFile = new File(configLocation);
+		
+		if(!Boolean.parseBoolean((String) config.getProperties().get("enabled"))){
+			Logger.log(Logger.INFO, "Mini-ing ceased due to config being disabled");
+			return;
+		}
 		
 		@SuppressWarnings("unchecked")
 		List<String> compressing = (List<String>) config.getProperties().get("compressing");
@@ -22,11 +29,28 @@ public class MiniFile {
 				if(hitReg){
 					MiniSegment segment = new MiniSegment(this, files);
 					segment.fetch();
-					segments.add(segment.getSegment());
+					
+					String segText = segment.getSegment();
+					
+					if(segText == null){
+						Logger.error("Could not load following config: " + configLocation);
+						return;
+					}else{
+						segments.add(segText);
+					}
+
 					files.clear();
 				}
 				
-				segments.add(new MiniSegment(this, new File(configFile.getParentFile().getAbsolutePath() + "/" + file)).getText());
+				String segText = new MiniSegment(this, new File(configFile.getParentFile().getAbsolutePath() + "/" + file)).getText();
+				
+				if(segText == null){
+					Logger.error("Could not load following config: " + configLocation);
+					return;
+				}else{
+					segments.add(segText);
+				}
+				
 				hitReg = false;
 				continue;
 			}
@@ -38,10 +62,20 @@ public class MiniFile {
 		if(hitReg){
 			MiniSegment segment = new MiniSegment(this, files);
 			segment.fetch();
-			segments.add(segment.getSegment());
+			
+			String segText = segment.getSegment();
+			
+			if(segText == null){
+				Logger.error("Could not load following config: " + configLocation);
+				return;
+			}else{
+				segments.add(segText);
+			}
 		}
 		
 		new MiniExporter(configFile.getParentFile().getAbsolutePath() + "/" + (String) config.getProperties().get("export"), segments);
+		
+		Logger.log(Logger.INFO, "File mini-ed successfully!");
 	}
 	
 	public MiniConfig getConfig(){

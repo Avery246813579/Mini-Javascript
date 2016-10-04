@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TemplateHandler {
 	public static final String TEMPLATE_LOCATOIN = "/Templates/Sections/";
-	public static final String[] TEMPLATES = {"ignoreMin", "compilationLevel", "active", "export", "compressing"};
+	public static final String[] TEMPLATES = {"enabled", "compressing", "export", "ignoreMin", "compilationLevel"};
 	private static Map<String, Template> templates = new HashMap<String, Template>();
 	
 	

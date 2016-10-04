@@ -3,6 +3,7 @@ package com.avery246813579.minijs.components;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -37,7 +38,12 @@ public class MiniSegment {
 	}
 
 	public void fetch() {
-		segment = request(encode(fetchText()));
+		String fetchText = fetchText();
+		if(fetchText == null){
+			return;
+		}
+		
+		segment = request(encode(fetchText));
 	}
 
 	private String encode(String text) {
@@ -63,8 +69,15 @@ public class MiniSegment {
 			}
 		} catch (Exception ex) {
 			Logger.log(Logger.ERROR, "Could not read file " + file.getName());
+			return null;
 		}
 
+		try {
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		return fetch;
 	}
 
@@ -82,7 +95,14 @@ public class MiniSegment {
 				}
 			} catch (Exception ex) {
 				Logger.log(Logger.ERROR, "Could not read file " + file.getName());
+				return null;
 			}
+		}
+		
+		try {
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 		return fetch;
@@ -90,8 +110,7 @@ public class MiniSegment {
 
 	private String request(String encoding) {
 		return Request.sendRequest("http://closure-compiler.appspot.com/compile", RequestMethod.POST, null,
-				"compilation_level=" + miniFile.getConfig().getProperties().get("compilationLevel")
-						+ "&output_format=text&output_info=compiled_code&js_code=" + encoding);
+				"compilation_level=" + miniFile.getConfig().getProperties().get("compilationLevel") + "&output_format=text&output_info=compiled_code&js_code=" + encoding);
 
 	}
 

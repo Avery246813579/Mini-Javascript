@@ -1,34 +1,34 @@
 #
-# This doesn't do anything yet
+# The status of if current configuration file should mini. 
 #
-active: true
+enabled: false
 
 #
-# Changes if we should ignore mini-ing '.min.js' files. 
+# Locations of the files to shorten
+#
+compressing: 
+- test/test.js
+- test/jquery.min.js
+- test/test2.js
+
+#
+# Location to export the shortened code
+#
+export: test/javascript.js
+
+#
+# True if we won't mini min files 
 #
 # Recommended true
 #
 ignoreMin: true
 
-#
-# Location of the export file
-#
-export: test/javascript.js
-
-#
-# Files we want to compress
-#
-compressing: 
-- pathto/file.js
-- file.min.js
-
 # 
 #  Choose a compilation level
-#
 #  - WHITESPACE_ONLY
 #  - SIMPLE_OPTIMIZATIONS
 #  - ADVANCED_OPTIMIZATIONS
 # 
 #  More information here: https://developers.google.com/closure/compiler/docs/compilation_levels
-#
+
 compilationLevel: SIMPLE_OPTIMIZATIONS
