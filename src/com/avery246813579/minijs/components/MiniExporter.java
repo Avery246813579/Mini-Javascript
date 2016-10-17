@@ -10,12 +10,17 @@ import java.util.List;
 import com.avery246813579.minijs.util.Logger;
 
 public class MiniExporter {
-	List<String> segments = new ArrayList<String>();
+	private List<String> segments = new ArrayList<String>();
+	private boolean success = false;
 
 	public MiniExporter(String file, List<String> segments) {
 		this.segments = segments;
 
-		export(checkFile(file));
+		File eFile = checkFile(file);
+
+		if (eFile != null) {
+			export(eFile);
+		}
 	}
 
 	private File checkFile(String name) {
@@ -26,6 +31,7 @@ public class MiniExporter {
 				file.createNewFile();
 			} catch (IOException e) {
 				Logger.log(Logger.ERROR, "Could not create export file");
+				return null;
 			}
 		}
 
@@ -39,6 +45,7 @@ public class MiniExporter {
 			writer = new BufferedWriter(new FileWriter(file));
 		} catch (Exception ex) {
 			Logger.log(Logger.ERROR, "Can't write to file");
+			return;
 		}
 
 		try {
@@ -47,14 +54,26 @@ public class MiniExporter {
 				writer.flush();
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			Logger.log(Logger.ERROR, "Could not write to export file");
+			
+			try {
+				writer.close();
+			} catch (IOException e) {
+			}
+
+			return;
 		}
-		
+
 		try {
 			writer.close();
+			
+			success = true;
 		} catch (Exception ex) {
 			Logger.log(Logger.ERROR, "Could not write to export file");
 		}
+	}
+
+	public boolean isSuccess(){
+		return success;
 	}
 }
