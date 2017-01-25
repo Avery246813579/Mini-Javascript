@@ -15,3 +15,4 @@ Note: It's recommended to use command prompt so you can view verbose
 - Comment code and config
 - Compress into seperate files
 - Add Mini-ing Css
+- Command in console 
