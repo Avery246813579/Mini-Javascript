@@ -16,3 +16,4 @@ Note: It's recommended to use command prompt so you can view verbose
 - Compress into seperate files
 - Add Mini-ing Css
 - Command in console 
+- Muliple File Compressions
