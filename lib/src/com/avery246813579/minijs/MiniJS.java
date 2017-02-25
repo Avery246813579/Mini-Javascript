@@ -13,9 +13,7 @@ public class MiniJS {
 	public static final String VERSION = "1.0.3";
 
 	public static void main(String[] args) {
-//		new MiniJS();
-		String strColor = String.format("#%06X", 0xFFFFFF & 1282111098);
-		System.out.println(strColor);
+		new MiniJS();
 	}
 
 	public MiniJS() {
